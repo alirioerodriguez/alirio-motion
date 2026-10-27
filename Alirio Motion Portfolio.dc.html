@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Alirio Rodríguez · alirio.motion — Motion Grapher · Video Editor</title>
+<link rel="stylesheet" href="_ds/modernist-bd36d6ab-722e-49b1-8f06-566bbb6c8f9f/styles.css">
+<script src="_ds/modernist-bd36d6ab-722e-49b1-8f06-566bbb6c8f9f/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--color-text);text-decoration:none}
+a:hover{color:var(--color-accent)}
+@keyframes amDrop{0%{transform:translateY(-360px)}100%{transform:translateY(0)}}
+@keyframes amSquash{0%{transform:scale(1,1)}30%{transform:scale(1.4,.55)}62%{transform:scale(.9,1.14)}100%{transform:scale(1,1)}}
+@keyframes amSlideL{0%{transform:translateX(115%)}100%{transform:translateX(0)}}
+@keyframes amSlideR{0%{transform:translateX(-115%)}100%{transform:translateX(0)}}
+@keyframes amRevL{0%{clip-path:inset(0 0 0 100%);transform:translateX(28px)}100%{clip-path:inset(0 0 0 0);transform:none}}
+@keyframes amRevR{0%{clip-path:inset(0 100% 0 0);transform:translateX(-28px)}100%{clip-path:inset(0 0 0 0);transform:none}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)">
+
+<header style="position:sticky;top:0;z-index:20;background:var(--color-bg);border-bottom:2px solid var(--color-text)">
+  <div style="max-width:1320px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <a href="#top" style="display:flex;align-items:center"><img src="assets/alirio-motion-negro.svg" alt="alirio.motion" style="height:30px;width:auto;display:block;margin-left:-6px"></a>
+    <nav style="display:flex;gap:28px;flex-wrap:wrap;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">
+      <a href="#about">Sobre mí</a>
+      <a href="#services">Servicios</a>
+      <a href="#pricing">Precios</a>
+      <a href="#work">Trabajos</a>
+      <a href="#tools">Herramientas</a>
+      <a href="#contact" style="color:var(--color-accent)">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section id="top" data-screen-label="Hero" style="max-width:1320px;margin:0 auto;padding:0 32px">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 0;border-bottom:2px solid var(--color-divider);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">
+    <sc-if value="{{ available }}" hint-placeholder-val="{{ true }}">
+      <span style="display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;background:var(--color-accent);display:block"></span>Disponible para proyectos · Available for work</span>
+    </sc-if>
+    <span style="color:var(--color-neutral-700)">Portfolio · 2026</span>
+  </div>
+
+  <div style="padding:clamp(72px,12vw,160px) 0 clamp(40px,6vw,72px)">
+    <div style="width:100%;max-width:1180px;aspect-ratio:552/84;position:relative">{{ logo }}</div>
+  </div>
+
+  <sc-if value="{{ showTimeline }}" hint-placeholder-val="{{ true }}">
+    <div style="border-top:2px solid var(--color-text);border-bottom:2px solid var(--color-text);display:grid;grid-template-columns:120px minmax(0,1fr);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">
+      <div style="padding:10px 12px 10px 0;border-right:2px solid var(--color-divider);display:flex;align-items:center;gap:10px">
+        <button onClick="{{ replay }}" aria-label="Replay" style="all:unset;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--color-text);color:var(--color-bg)" style-hover="background:var(--color-accent)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg>
+        </button>
+        <span ref="{{ tcRef }}" style="font-variant-numeric:tabular-nums;font-size:13px">00:00:00:00</span>
+      </div>
+      <div style="display:grid;grid-template-columns:80px minmax(0,1fr)">
+      <div style="display:grid;grid-template-rows:repeat(3,22px);gap:4px;padding:8px 12px;border-right:2px solid var(--color-divider);color:var(--color-neutral-700)">
+        <span style="line-height:22px">■ drop</span><span style="line-height:22px">alirio</span><span style="line-height:22px">motion</span>
+      </div>
+      <div style="position:relative;padding:8px 0">
+        <div style="display:grid;grid-template-rows:repeat(3,22px);gap:4px">
+          <div style="position:relative"><span style="position:absolute;left:5%;width:42.5%;top:5px;height:12px;background:var(--color-accent)"></span></div>
+          <div style="position:relative"><span style="position:absolute;left:40%;width:45%;top:5px;height:12px;background:var(--color-text)"></span></div>
+          <div style="position:relative"><span style="position:absolute;left:50%;width:45%;top:5px;height:12px;background:var(--color-text)"></span></div>
+        </div>
+        <div ref="{{ headRef }}" style="position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--color-accent);pointer-events:none"></div>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-bottom:2px solid var(--color-divider)">
+    <div style="padding:28px 24px 32px 0">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:10px">Rol · Role</div>
+      <div style="font-size:22px;font-weight:800;line-height:1.15;letter-spacing:-.01em">Motion Grapher<br>Video Editor<br>AI Content Creator</div>
+    </div>
+    <div style="padding:28px 24px 32px 0">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:10px">Base · Based in</div>
+      <div style="font-size:22px;font-weight:800;line-height:1.15;letter-spacing:-.01em">Argentina</div>
+      <div style="font-size:15px;margin-top:6px;color:var(--color-neutral-800)">Clientes en Venezuela, Argentina, España y USA.</div>
+    </div>
+    <div style="padding:28px 0 32px 0;display:flex;flex-direction:column;gap:10px;justify-content:flex-end">
+      <a href="#work" class="btn btn-primary" style="justify-content:space-between;padding:16px 18px;font-size:15px;font-weight:600;color:var(--color-bg)">Ver trabajos / View work <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+      <a href="#contact" class="btn btn-secondary" style="justify-content:space-between;padding:16px 18px;font-size:15px;font-weight:600;border-width:2px">Contacto / Contact <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+    </div>
+  </div>
+</section>
+
+<section id="about" data-screen-label="01 Sobre mí" style="max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,128px) 32px 0">
+  <div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:baseline;margin-bottom:56px">
+    <div style="flex:0 0 200px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="width:10px;height:10px;background:var(--color-accent);display:block"></span>01 — Sobre mí</div>
+    <div style="flex:1 1 520px">
+      <h2 style="margin:0;font-size:clamp(40px,6vw,88px);line-height:.95;letter-spacing:-.035em;text-wrap:balance">Historias que <span style="color:var(--color-accent)">mueven</span> marcas.</h2>
+      <div style="margin-top:14px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Stories that move brands.</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;border-top:2px solid var(--color-text);padding-top:40px">
+    <div style="display:flex;flex-direction:column;gap:20px;font-size:19px;line-height:1.55;max-width:620px;text-wrap:pretty">
+      <p style="margin:0">Soy <strong>Alirio Rodríguez</strong>, motion grapher y video editor con <strong>7+ años</strong> creando contenido visual para marcas y agencias en Venezuela, Argentina, España y Estados Unidos.</p>
+      <p style="margin:0;color:var(--color-neutral-800)">Combino craft editorial con herramientas de inteligencia artificial para entregar más rápido, más inteligente y con mayor impacto. La historia primero; la tecnología al servicio.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:2px solid var(--color-divider);border-left:2px solid var(--color-divider)">
+      <div style="padding:24px;border-right:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider)"><div style="font-size:56px;font-weight:800;letter-spacing:-.04em;line-height:1">7<span style="color:var(--color-accent)">+</span></div><div style="margin-top:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Años · Years</div></div>
+      <div style="padding:24px;border-right:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider)"><div style="font-size:56px;font-weight:800;letter-spacing:-.04em;line-height:1">4</div><div style="margin-top:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Países · Countries</div></div>
+      <div style="padding:24px;border-right:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider)"><div style="font-size:56px;font-weight:800;letter-spacing:-.04em;line-height:1">250<span style="color:var(--color-accent)">+</span></div><div style="margin-top:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Proyectos · Projects</div></div>
+      <div style="padding:24px;border-right:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);display:flex;flex-direction:column;justify-content:space-between;gap:8px"><div style="display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;font-weight:600;letter-spacing:.04em">
+        <span style="display:flex;align-items:center;gap:6px"><img src="https://flagcdn.com/ve.svg" alt="Venezuela" style="width:24px;height:16px;object-fit:cover;display:block;outline:1px solid var(--color-divider)">VE</span>
+        <span style="display:flex;align-items:center;gap:6px"><img src="https://flagcdn.com/ar.svg" alt="Argentina" style="width:24px;height:16px;object-fit:cover;display:block;outline:1px solid var(--color-divider)">AR</span>
+        <span style="display:flex;align-items:center;gap:6px"><img src="https://flagcdn.com/es.svg" alt="España" style="width:24px;height:16px;object-fit:cover;display:block;outline:1px solid var(--color-divider)">ES</span>
+        <span style="display:flex;align-items:center;gap:6px"><img src="https://flagcdn.com/us.svg" alt="USA" style="width:24px;height:16px;object-fit:cover;display:block;outline:1px solid var(--color-divider)">US</span>
+      </div><div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Editing without borders</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" data-screen-label="02 Servicios" style="max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,128px) 32px 0">
+  <div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:baseline;margin-bottom:56px">
+    <div style="flex:0 0 200px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="width:10px;height:10px;background:var(--color-accent);display:block"></span>02 — Servicios</div>
+    <div style="flex:1 1 520px">
+      <h2 style="margin:0;font-size:clamp(40px,6vw,88px);line-height:.95;letter-spacing:-.035em">Qué <span style="color:var(--color-accent)">entrego</span>.</h2>
+      <div style="margin-top:14px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">What I deliver.</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;background:var(--color-text);border:2px solid var(--color-text)">
+    <div style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:14px;min-height:240px" style-hover="background:var(--color-accent-100)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"></path></svg><span style="font-size:12px;font-weight:600;color:var(--color-neutral-700)">001</span></div>
+      <h3 style="margin:16px 0 0;font-size:26px;letter-spacing:-.02em;line-height:1.05">Motion Graphics</h3>
+      <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-700)">Motion &amp; animation</div>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">Gráficas animadas, lower thirds, logos en movimiento y tipografía kinética con precisión en After Effects.</p>
+    </div>
+    <div style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:14px;min-height:240px" style-hover="background:var(--color-accent-100)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M12 18h.01"></path></svg><span style="font-size:12px;font-weight:600;color:var(--color-neutral-700)">002</span></div>
+      <h3 style="margin:16px 0 0;font-size:26px;letter-spacing:-.02em;line-height:1.05">Reels &amp; Social</h3>
+      <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-700)">Short-form content</div>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">Contenido vertical para frenar el scroll. Reels, TikToks y Shorts con ritmo y hook desde el primer frame.</p>
+    </div>
+    <div style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:14px;min-height:240px" style-hover="background:var(--color-accent-100)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"></path><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"></path><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"></path></svg><span style="font-size:12px;font-weight:600;color:var(--color-neutral-700)">003</span></div>
+      <h3 style="margin:16px 0 0;font-size:26px;letter-spacing:-.02em;line-height:1.05">Brand &amp; Agency</h3>
+      <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-700)">Edición para agencias</div>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">Colaboración white-label con agencias creativas. Workflows ágiles, entregas a tiempo y revisiones sin fricción.</p>
+    </div>
+    <div style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:14px;min-height:240px" style-hover="background:var(--color-accent-100)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect x="2" y="6" width="20" height="14" rx="2"></rect></svg><span style="font-size:12px;font-weight:600;color:var(--color-neutral-700)">004</span></div>
+      <h3 style="margin:16px 0 0;font-size:26px;letter-spacing:-.02em;line-height:1.05">Corporate Video</h3>
+      <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-700)">Institucional</div>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">Videos institucionales y case studies que comunican valor con un lenguaje premium y confiable.</p>
+    </div>
+    <div style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:14px;min-height:240px" style-hover="background:var(--color-accent-100)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path></svg><span style="font-size:12px;font-weight:600;color:var(--color-neutral-700)">005</span></div>
+      <h3 style="margin:16px 0 0;font-size:26px;letter-spacing:-.02em;line-height:1.05">AI-Powered Content</h3>
+      <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-700)">HeyGen · CapCut AI</div>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">Producción acelerada con IA: avatares generados, subtítulos inteligentes y B-roll sintético.</p>
+    </div>
+    <div style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:14px;min-height:240px" style-hover="background:var(--color-accent-100)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg><span style="font-size:12px;font-weight:600;color:var(--color-neutral-700)">006</span></div>
+      <h3 style="margin:16px 0 0;font-size:26px;letter-spacing:-.02em;line-height:1.05">Podcast &amp; Interviews</h3>
+      <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-700)">Podcast editing</div>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">Edición completa de podcasts en video: sincronización, clips cortos, capítulos y versiones para redes.</p>
+    </div>
+  </div>
+
+  <!-- Formatos y precios (USD, 27/10/2026) -->
+  <div id="pricing" style="scroll-margin-top:80px;padding-top:clamp(72px,10vw,128px)">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:baseline;margin-bottom:40px">
+      <div style="flex:0 0 200px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="width:10px;height:10px;background:var(--color-accent);display:block"></span>Formatos y precios</div>
+      <div style="flex:1 1 520px">
+        <h2 style="margin:0;font-size:clamp(40px,6vw,88px);line-height:.95;letter-spacing:-.035em">Elegí tu <span style="color:var(--color-accent)">formato</span>.</h2>
+        <div style="margin-top:14px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Pick your format · Prices in USD</div>
+      </div>
+    </div>
+
+    <div style="background:var(--color-text);color:var(--color-bg);padding:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 40px;align-items:start">
+      <div style="font-size:22px;font-weight:800;line-height:1.15;letter-spacing:-.01em">Todos los precios incluyen <span style="color:var(--color-accent)">motion graphics</span> + <span style="color:var(--color-accent)">IA</span>.<div style="margin-top:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.7">Motion graphics &amp; AI included</div></div>
+      <div style="font-size:15px;line-height:1.5"><strong style="display:block;margin-bottom:4px">Motion graphics</strong>Títulos, lower thirds, placas y tipografía animada en After Effects.</div>
+      <div style="font-size:15px;line-height:1.5"><strong style="display:block;margin-bottom:4px">Herramientas con IA</strong>Mejora de audio, subtítulos inteligentes, B-roll e imágenes generadas, con criterio editorial humano.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2px;background:var(--color-text);border:2px solid var(--color-text);margin-top:2px">
+      <article style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="color:var(--color-neutral-700)">A</span><span class="tag tag-accent">16:9</span></div>
+        <h3 style="margin:8px 0 0;font-size:clamp(28px,3vw,40px);letter-spacing:-.025em;line-height:1">Videos largos</h3>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-700)">Long-form · YouTube · Podcast · Institucional</div>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">YouTube, entrevistas, podcasts en video, documentales e institucionales: orden, ritmo, color, sonido y gráficos de punta a punta.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);font-size:13px">
+          <div style="padding:12px 8px 12px 0;border-right:2px solid var(--color-divider)"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Duración</div><strong>Hasta 20 min</strong></div>
+          <div style="padding:12px 8px;border-right:2px solid var(--color-divider)"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Entrega</div><strong>3–5 días</strong></div>
+          <div style="padding:12px 0 12px 8px"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Cambios</div><strong>2 rondas</strong></div>
+        </div>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.4">
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>Edición, cortes y ritmo narrativo</li>
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>Corrección de color y mezcla de audio</li>
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>Motion graphics: títulos, lower thirds y placas</li>
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>IA para mejorar audio y extender o limpiar imágenes</li>
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>Subtítulos en español o inglés</li>
+        </ul>
+        <div style="margin-top:auto;padding-top:18px;border-top:2px solid var(--color-text)">
+          <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Desde · From</div>
+          <div style="font-size:clamp(44px,5vw,64px);font-weight:800;letter-spacing:-.04em;line-height:1">USD 120</div>
+          <div style="margin-top:6px;font-size:13px;color:var(--color-neutral-700)">Hasta 10 min · hasta 20 min desde USD 180</div>
+        </div>
+        <a href="https://wa.me/5491168472177?text=Hola%20Alirio%2C%20quiero%20cotizar%20un%20video%20largo." target="_blank" rel="noopener" class="btn btn-primary" style="justify-content:space-between;padding:16px 18px;font-size:15px;font-weight:600;color:var(--color-bg)">Cotizar video largo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+      </article>
+
+      <article style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="color:var(--color-neutral-700)">B</span><span class="tag tag-accent">9:16</span></div>
+        <h3 style="margin:8px 0 0;font-size:clamp(28px,3vw,40px);letter-spacing:-.025em;line-height:1">Videos cortos y reels</h3>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-700)">Short-form · Reels · TikTok · Shorts · Ads</div>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">Piezas verticales para frenar el scroll: hook desde el primer frame, subtítulos animados y un ritmo que retiene hasta el final.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);font-size:13px">
+          <div style="padding:12px 8px 12px 0;border-right:2px solid var(--color-divider)"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Duración</div><strong>Hasta 90 s</strong></div>
+          <div style="padding:12px 8px;border-right:2px solid var(--color-divider)"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Entrega</div><strong>24–72 h</strong></div>
+          <div style="padding:12px 0 12px 8px"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Cambios</div><strong>2 rondas</strong></div>
+        </div>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.4">
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>Vertical 9:16 listo para publicar</li>
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>Hook inicial y edición dinámica</li>
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>Subtítulos animados, música y efectos</li>
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>Motion graphics: textos, zooms y placas</li>
+          <li style="display:flex;gap:10px"><span style="flex:0 0 8px;height:8px;margin-top:6px;background:var(--color-accent)"></span>Recursos visuales creados con IA y portada</li>
+        </ul>
+        <div style="margin-top:auto;padding-top:18px;border-top:2px solid var(--color-text)">
+          <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Desde · From</div>
+          <div style="font-size:clamp(44px,5vw,64px);font-weight:800;letter-spacing:-.04em;line-height:1">USD 30</div>
+          <div style="margin-top:6px;font-size:13px;color:var(--color-neutral-700)">Por reel · cortes extra del mismo video, USD 5 c/u</div>
+        </div>
+        <a href="https://wa.me/5491168472177?text=Hola%20Alirio%2C%20quiero%20cotizar%20videos%20cortos%20o%20reels." target="_blank" rel="noopener" class="btn btn-primary" style="justify-content:space-between;padding:16px 18px;font-size:15px;font-weight:600;color:var(--color-bg)">Cotizar reels <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+      </article>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;margin:56px 0 20px">
+      <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="width:10px;height:10px;background:var(--color-accent);display:block"></span>C — Paquetes mensuales · Monthly packages</div>
+      <div style="font-size:14px;color:var(--color-neutral-700)">Precio fijo por mes, entregas semanales y prioridad en la agenda.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:2px;background:var(--color-text);border:2px solid var(--color-text)">
+      <article style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Paquete largos</div>
+        <h3 style="margin:0;font-size:30px;letter-spacing:-.025em;line-height:1.05">4 videos largos<span style="font-size:14px;font-weight:600;color:var(--color-neutral-700)"> / mes</span></h3>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">Para canales y marcas que publican un video por semana. Estilo gráfico fijo y 4 miniaturas incluidas.</p>
+        <div style="margin-top:auto;padding-top:16px;border-top:2px solid var(--color-divider)"><div style="font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1">USD 420</div><div style="margin-top:6px;font-size:13px;color:var(--color-neutral-700)">Por mes · USD 105 por video</div></div>
+        <a href="https://wa.me/5491168472177?text=Hola%20Alirio%2C%20me%20interesa%20el%20Paquete%20Videos%20largos." target="_blank" rel="noopener" class="btn btn-secondary" style="justify-content:space-between;padding:14px 18px;font-size:15px;font-weight:600;border-width:2px">Consultar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+      </article>
+      <article style="background:var(--color-accent);color:#fff;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span>Paquete combo</span><span style="background:var(--color-text);color:var(--color-bg);padding:4px 8px">Más elegido</span></div>
+        <h3 style="margin:0;font-size:30px;letter-spacing:-.025em;line-height:1.05;color:#fff">2 largos + 8 reels<span style="font-size:14px;font-weight:600"> / mes</span></h3>
+        <p style="margin:0;font-size:15px;line-height:1.5">De cada video largo salen los reels: más contenido con el mismo material y la misma identidad.</p>
+        <div style="margin-top:auto;padding-top:16px;border-top:2px solid #fff"><div style="font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1">USD 400</div><div style="margin-top:6px;font-size:13px">Por mes · ahorrás USD 80</div></div>
+        <a href="https://wa.me/5491168472177?text=Hola%20Alirio%2C%20me%20interesa%20el%20Paquete%20Combo." target="_blank" rel="noopener" class="btn" style="justify-content:space-between;padding:14px 18px;font-size:15px;font-weight:600;background:var(--color-text);color:var(--color-bg);border:2px solid var(--color-text)" style-hover="background:#fff;color:var(--color-text)">Consultar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+      </article>
+      <article style="background:var(--color-bg);padding:28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Paquete reels</div>
+        <h3 style="margin:0;font-size:30px;letter-spacing:-.025em;line-height:1.05">12 reels<span style="font-size:14px;font-weight:600;color:var(--color-neutral-700)"> / mes</span></h3>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800)">Para publicar 3 veces por semana, con plantilla de subtítulos propia y 12 portadas para el feed.</p>
+        <div style="margin-top:auto;padding-top:16px;border-top:2px solid var(--color-divider)"><div style="font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1">USD 300</div><div style="margin-top:6px;font-size:13px;color:var(--color-neutral-700)">Por mes · USD 25 por reel</div></div>
+        <a href="https://wa.me/5491168472177?text=Hola%20Alirio%2C%20me%20interesa%20el%20Paquete%20Reels." target="_blank" rel="noopener" class="btn btn-secondary" style="justify-content:space-between;padding:14px 18px;font-size:15px;font-weight:600;border-width:2px">Consultar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+      </article>
+    </div>
+    <div style="margin-top:16px;font-size:14px;color:var(--color-neutral-700)">Todos los paquetes incluyen motion graphics e IA. ¿Otra cantidad? Armamos un paquete a tu medida · Custom packages available.</div>
+  </div>
+</section>
+
+<section data-screen-label="Stats" style="max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,128px) 32px 0">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:2px solid var(--color-text);border-bottom:2px solid var(--color-text)">
+    <div style="padding:32px 24px 32px 0;border-right:2px solid var(--color-divider)"><div style="font-size:clamp(56px,7vw,96px);font-weight:800;letter-spacing:-.05em;line-height:.9">10M<span style="color:var(--color-accent)">+</span></div><div style="margin-top:14px;font-size:15px;font-weight:600">Views en un solo video</div><div style="font-size:13px;color:var(--color-neutral-700)">Views on a single video</div></div>
+    <div style="padding:32px 24px;border-right:2px solid var(--color-divider)"><div style="font-size:clamp(56px,7vw,96px);font-weight:800;letter-spacing:-.05em;line-height:.9">7<span style="color:var(--color-accent)">+</span></div><div style="margin-top:14px;font-size:15px;font-weight:600">Años de experiencia</div><div style="font-size:13px;color:var(--color-neutral-700)">Years of experience</div></div>
+    <div style="padding:32px 24px;border-right:2px solid var(--color-divider)"><div style="font-size:clamp(56px,7vw,96px);font-weight:800;letter-spacing:-.05em;line-height:.9">250<span style="color:var(--color-accent)">+</span></div><div style="margin-top:14px;font-size:15px;font-weight:600">Proyectos entregados</div><div style="font-size:13px;color:var(--color-neutral-700)">Projects delivered</div></div>
+    <div style="padding:32px 24px"><div style="font-size:clamp(56px,7vw,96px);font-weight:800;letter-spacing:-.05em;line-height:.9">4</div><div style="margin-top:14px;font-size:15px;font-weight:600">Países atendidos</div><div style="font-size:13px;color:var(--color-neutral-700)">Countries served</div></div>
+  </div>
+</section>
+
+<section id="work" data-screen-label="03 Trabajos" style="max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,128px) 32px 0">
+  <div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:baseline;margin-bottom:56px">
+    <div style="flex:0 0 200px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="width:10px;height:10px;background:var(--color-accent);display:block"></span>03 — Trabajos</div>
+    <div style="flex:1 1 520px">
+      <h2 style="margin:0;font-size:clamp(40px,6vw,88px);line-height:.95;letter-spacing:-.035em">Selección <span style="color:var(--color-accent)">destacada</span>.</h2>
+      <div style="margin-top:14px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">Featured selection.</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:48px 32px">
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+      <article style="display:flex;flex-direction:column;border-top:2px solid var(--color-text)">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span>{{ p.num }}</span><span class="tag tag-accent">{{ p.tag }}</span></div>
+        <div style="position:relative;width:100%;aspect-ratio:16/9;background:var(--color-surface)">
+          <image-slot id="{{ p.slot }}" shape="rect" placeholder="Arrastra un still o GIF del proyecto"></image-slot>
+        </div>
+        <h3 style="margin:18px 0 6px;font-size:24px;letter-spacing:-.02em;line-height:1.1">{{ p.title }}</h3>
+        <div style="font-size:13px;color:var(--color-neutral-700);margin-bottom:14px">{{ p.meta }}</div>
+        <a href="#" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Ver proyecto / View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="tools" data-screen-label="04 Herramientas" style="max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,128px) 32px 0">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:48px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px"><span style="width:10px;height:10px;background:var(--color-accent);display:block"></span>04 — Herramientas / IA</div>
+      <h2 style="margin:0;font-size:clamp(40px,6vw,88px);line-height:.95;letter-spacing:-.035em">IA como <span style="color:var(--color-accent)">ventaja</span>.</h2>
+      <div style="margin-top:14px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">AI as a competitive edge.</div>
+      <p style="margin:32px 0 0;font-size:18px;line-height:1.55;max-width:520px;text-wrap:pretty">La IA no reemplaza el criterio editorial: lo amplifica. La integro en cada pipeline para entregar más rápido, escalar mejor y liberar tiempo para lo que importa — la historia.</p>
+    </div>
+    <div style="border-top:2px solid var(--color-text)">
+      <sc-for list="{{ tools }}" as="t" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr);gap:16px;padding:20px 0;border-bottom:2px solid var(--color-divider);align-items:baseline">
+          <div>
+            <div style="font-size:24px;font-weight:800;letter-spacing:-.02em">{{ t.name }}</div>
+            <div style="margin-top:4px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-700)">{{ t.badge }}</div>
+          </div>
+          <div style="font-size:15px;line-height:1.5;color:var(--color-neutral-800)">{{ t.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="05 Testimonios" style="max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,128px) 32px">
+  <div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:baseline;margin-bottom:56px">
+    <div style="flex:0 0 200px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="width:10px;height:10px;background:var(--color-accent);display:block"></span>05 — Testimonios</div>
+    <div style="flex:1 1 520px">
+      <h2 style="margin:0;font-size:clamp(40px,6vw,88px);line-height:.95;letter-spacing:-.035em">Lo que <span style="color:var(--color-accent)">dicen</span>.</h2>
+      <div style="margin-top:14px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-700)">What clients say.</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--color-text);border:2px solid var(--color-text)">
+    <figure style="margin:0;background:var(--color-bg);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:32px">
+      <blockquote style="margin:0;font-size:18px;line-height:1.5;text-wrap:pretty">“Alirio entiende el ritmo de una pieza como pocos. Entregó la campaña en tiempo récord y el resultado elevó completamente la percepción de marca.”</blockquote>
+      <figcaption style="border-top:2px solid var(--color-divider);padding-top:14px"><div style="font-weight:800">Carlos Méndez</div><div style="font-size:13px;color:var(--color-neutral-700)">Marketing Director · Valencia, España</div></figcaption>
+    </figure>
+    <figure style="margin:0;background:var(--color-bg);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:32px">
+      <blockquote style="margin:0;font-size:18px;line-height:1.5;text-wrap:pretty">“Working with Alirio is a game-changer. His AI-driven workflow cuts our delivery time in half without ever compromising craft.”</blockquote>
+      <figcaption style="border-top:2px solid var(--color-divider);padding-top:14px"><div style="font-weight:800">Jessica Ramírez</div><div style="font-size:13px;color:var(--color-neutral-700)">Creative Producer · Miami, USA</div></figcaption>
+    </figure>
+    <figure style="margin:0;background:var(--color-bg);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:32px">
+      <blockquote style="margin:0;font-size:18px;line-height:1.5;text-wrap:pretty">“Encontrar un editor que combine sensibilidad narrativa con dominio técnico real es raro. Cada entrega superó nuestras expectativas.”</blockquote>
+      <figcaption style="border-top:2px solid var(--color-divider);padding-top:14px"><div style="font-weight:800">Simón Bermúdez</div><div style="font-size:13px;color:var(--color-neutral-700)">CEO · Voltex, Argentina</div></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="Contacto" style="background:var(--color-accent);color:#fff">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,128px) 32px 40px">
+    <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px"><span style="width:10px;height:10px;background:var(--color-text);display:block"></span>Hablemos · Let's talk</div>
+    <h2 style="margin:0;font-size:clamp(48px,9vw,140px);line-height:.9;letter-spacing:-.045em;color:#fff;max-width:1100px;text-wrap:balance">Tu próxima historia empieza aquí.</h2>
+    <p style="margin:28px 0 0;font-size:19px;line-height:1.5;max-width:560px;color:#fff">Si tu marca o agencia necesita contenido que mueva métricas, escríbeme. Respondo en menos de 24 h.<br><span style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Your next story starts here · Reply within 24 h</span></p>
+    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-top:2px solid #fff;border-bottom:2px solid #fff">
+      <a href="mailto:[email]" style="color:#fff;padding:22px 20px 22px 0;display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:800;border-right:2px solid #fff" style-hover="background:var(--color-accent-600);color:#fff">Email · [email] <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+      <a href="[instagram]" style="color:#fff;padding:22px 20px;display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:800;border-right:2px solid #fff" style-hover="background:var(--color-accent-600);color:#fff">Instagram <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+      <a href="https://www.linkedin.com/in/aliriorodriguezeditor/" target="_blank" rel="noopener" style="color:#fff;padding:22px 20px;display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:800" style-hover="background:var(--color-accent-600);color:#fff">LinkedIn <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+    </div>
+    <div style="margin-top:clamp(64px,10vw,120px)"><img src="assets/alirio-motion-rojo.svg" alt="alirio.motion" style="width:100%;max-width:1180px;height:auto;display:block;margin-left:-3.5%"></div>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:24px;padding-top:16px;border-top:2px solid #fff;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">
+      <span>© 2026 Alirio Rodríguez</span><span>Hecho desde Argentina · Made in Argentina</span>
+    </div>
+  </div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;loopLogo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showTimeline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;available&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { pA: null, pM: null, k: 0 };
+  tcRef = React.createRef();
+  headRef = React.createRef();
+  D = 2.0;
+  componentDidMount() {
+    fetch('assets/alirio-motion-negro.svg').then(r => r.text()).then(t => {
+      const ds = [...t.matchAll(/<path[^>]*\sd="([^"]+)"/g)].map(m => m[1]);
+      this.setState({ pA: ds[0], pM: ds[1] });
+      this.start = performance.now();
+    });
+    this.start = performance.now();
+    const tick = (now) => {
+      const el = (now - this.start) / 1000;
+      if ((this.props.loopLogo ?? true) && el > 7) this.replay();
+      const t = Math.min(el, this.D);
+      if (this.headRef.current) this.headRef.current.style.left = (t / this.D * 100) + '%';
+      if (this.tcRef.current) {
+        const f = Math.floor(t * 25), p = n => String(n).padStart(2, '0');
+        this.tcRef.current.textContent = `00:00:${p(Math.floor(f / 25))}:${p(f % 25)}`;
+      }
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+  replay = () => { this.start = performance.now(); this.setState(s => ({ k: s.k + 1 })); };
+  renderLogo() {
+    const { pA, pM, k } = this.state;
+    if (!pA) return null;
+    const h = React.createElement;
+    const box = { transformBox: 'fill-box' };
+    const ease = 'cubic-bezier(.16,1,.3,1)';
+    return h('svg', { key: k, viewBox: '18 20 552 84', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'visible', display: 'block' }, 'aria-label': 'alirio.motion' },
+      h('defs', null,
+        h('clipPath', { id: 'amClipA' }, h('rect', { x: -100, y: -100, width: 356.5, height: 400 })),
+        h('clipPath', { id: 'amClipM' }, h('rect', { x: 284, y: -100, width: 400, height: 400 }))),
+      h('g', { clipPath: 'url(#amClipA)' },
+        h('path', { d: pA, style: { ...box, fill: 'var(--color-text)', animation: `amSlideL .9s ${ease} .8s both` } })),
+      h('g', { clipPath: 'url(#amClipM)' },
+        h('path', { d: pM, style: { ...box, fill: 'var(--color-text)', animation: `amSlideR .9s ${ease} 1s both` } })),
+      h('g', { style: { ...box, animation: 'amDrop .45s cubic-bezier(.55,0,1,.45) .1s both' } },
+        h('rect', { x: 258.45, y: 74.56, width: 23.44, height: 23.44, style: { ...box, fill: 'var(--color-accent)', transformOrigin: '50% 100%', animation: 'amSquash .4s ease-out .55s both' } }))
+    );
+  }
+  renderVals() {
+    const P = (num, tag, title, meta) => ({ num, tag, title, meta, slot: 'work-' + num });
+    return {
+      logo: this.renderLogo(),
+      replay: this.replay,
+      tcRef: this.tcRef,
+      headRef: this.headRef,
+      available: this.props.available ?? true,
+      showTimeline: this.props.showTimeline ?? true,
+      projects: [
+        P('01', 'Brand Film', 'Campaña Voltex — Brand Launch', 'Motion + Editorial · 2025'),
+        P('02', 'Motion', 'Kinetic Type Reel', 'Motion Design · 2024'),
+        P('03', 'Reels', 'Social Reels · Agencia MAD', 'Short-form · 2025'),
+        P('04', 'AI Pipeline', 'HeyGen Explainer · Bilingüe', 'AI Content · 2025'),
+        P('05', 'Podcast', 'Modo Miami — Episodio 8', 'Podcast Editing · 2024'),
+        P('06', 'Corporate', 'Institucional — Sector Salud', 'Corporate · 2024'),
+      ],
+      tools: [
+        { name: 'After Effects', badge: 'Adobe · Motion', desc: 'Motion graphics, VFX y compositing avanzado.' },
+        { name: 'Premiere Pro', badge: 'Adobe · Edit', desc: 'Edición editorial, color base y timelines complejos.' },
+        { name: 'CapCut Pro', badge: 'Short-form', desc: 'Short-form rápido y edición en equipo.' },
+        { name: 'HeyGen', badge: 'AI native', desc: 'Avatares IA bilingües para contenido escalable.' },
+        { name: 'AI Pipeline', badge: 'AI native', desc: 'B-roll generado, traducción automática, subtítulos inteligentes y avatares — en un workflow rápido sin sacrificar craft.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
